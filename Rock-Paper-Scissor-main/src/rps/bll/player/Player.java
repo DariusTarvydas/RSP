@@ -7,6 +7,7 @@ import rps.bll.game.Result;
 
 //Java imports
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Example implementation of a player.
@@ -49,7 +50,19 @@ public class Player implements IPlayer {
         //Historic data to analyze and decide next move...
         ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
 
-        //Implement better AI here...
+        int random = randomNumber();
+
+        if(random == 1){return Move.Rock;}
+        else if(random == 2){return Move.Paper;}
+        else if(random == 3){return Move.Scissor;}
+
         return Move.Rock;
+
+    }
+
+    public int randomNumber(){
+        int min = 1;
+        int max = 4;
+        return ((int) ((Math.random() * (max - min)) + min));
     }
 }
